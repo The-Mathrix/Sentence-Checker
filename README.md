@@ -10,39 +10,38 @@
       background: radial-gradient(circle at top, #2a003f, #0d001a);
       color: #e0b3ff;
       text-align: center;
-      padding: 8px;
+      padding: 12px;
       max-width: 480px;
       margin: auto;
     }
     h1 {
       color: #ff66ff;
-      font-size: 4vw;
+      font-size: 1.1rem;
       text-shadow: 0 0 5px #ff00ff, 0 0 10px #cc00cc;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       line-height: 1.3;
     }
     p {
-      font-size: 3.2vw;
-      margin-bottom: 12px;
+      font-size: 0.9rem;
+      margin-bottom: 14px;
       color: #80ffff;
       text-shadow: 0 0 5px #00ffff;
     }
     .sentence {
-      margin: 10px auto;
-      font-size: 3vw;
+      margin: 12px auto;
+      font-size: 0.9rem;
       background: rgba(20, 0, 40, 0.9);
-      padding: 10px;
+      padding: 12px;
       border: 2px solid #ff00cc;
       border-radius: 12px;
       display: block;
       max-width: 95%;
       box-shadow: 0 0 12px #ff00cc, 0 0 18px #800080;
-      word-wrap: break-word;
       color: #ffffff;
     }
     input {
       padding: 6px;
-      font-size: 3vw;
+      font-size: 0.85rem;
       border-radius: 6px;
       border: 2px solid #00ffff;
       outline: none;
@@ -60,13 +59,13 @@
     .result {
       display: block;
       font-weight: bold;
-      font-size: 3vw;
+      font-size: 0.85rem;
       margin-top: 3px;
     }
     button {
       background: linear-gradient(135deg, #ff00cc, #6600ff);
       color: #fff;
-      font-size: 3.5vw;
+      font-size: 1rem;
       padding: 10px 18px;
       border: none;
       border-radius: 8px;
@@ -82,7 +81,7 @@
     }
     #score {
       margin-top: 14px;
-      font-size: 3.5vw;
+      font-size: 1rem;
       color: #80ffff;
       text-shadow: 0 0 6px #00ffff;
     }
@@ -122,8 +121,6 @@
       for (let i = 0; i < answers.length; i++) {
         let input = document.getElementById("blank" + i).value.trim().toLowerCase();
         const resultSpan = document.getElementById("result" + i);
-
-        input = input.replace(/\s+/g, " ");
 
         if (answers[i].includes(input)) {
           resultSpan.textContent = "✅ Correct!";
