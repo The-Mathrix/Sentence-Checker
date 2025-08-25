@@ -15,8 +15,9 @@
     h1 {
       color: #00ffcc;
     }
-    .blank {
-      margin: 15px 0;
+    .sentence {
+      margin: 20px 0;
+      font-size: 20px;
     }
     input {
       padding: 6px;
@@ -24,10 +25,10 @@
       border-radius: 6px;
       border: none;
       outline: none;
-      margin-left: 8px;
+      margin: 0 5px;
     }
     .result {
-      margin-left: 10px;
+      margin-left: 8px;
       font-weight: bold;
     }
     button {
@@ -52,47 +53,43 @@
 </head>
 <body>
   <h1>Word Type Checker</h1>
-  <p>Fill in each blank with the correct type of word.</p>
+  <p>Fill in the blanks with the correct type of word.</p>
 
-  <div id="blanks"></div>
+  <div class="sentence">
+    Math makes 
+    <input type="text" id="blank0" placeholder="Noun (math)"> <span id="result0" class="result"></span> 
+    <input type="text" id="blank1" placeholder="Adjective"> <span id="result1" class="result"></span>, 
+    so keep 
+    <input type="text" id="blank2" placeholder="Action"> <span id="result2" class="result"></span> 
+    and you will 
+    <input type="text" id="blank3" placeholder="Verb"> <span id="result3" class="result"></span> 
+    the 
+    <input type="text" id="blank4" placeholder="Noun (arcade/math)"> <span id="result4" class="result"></span>!
+  </div>
 
   <button onclick="checkAnswers()">Check Answers</button>
   <div id="score"></div>
 
   <script>
-    // Define valid words for each blank
+    // Word banks
     const answers = [
-      ["equation", "variable", "function"],      // 1: math noun
-      ["complex", "difficult", "simple"],        // 2: adjective
-      ["calculate", "solve", "compute"],         // 3: action
-      ["derive", "add", "subtract"],             // 4: verb
-      ["arcade", "matrix", "algorithm"],         // 5: math/arcade noun
-      ["geometry", "algebra"],                   // 6: math noun
-      ["challenging", "fun"],                    // 7: adjective
-      ["analyze", "graph"],                      // 8: action
-      ["play", "explore"],                       // 9: verb
-      ["puzzle", "staircase"]                    // 10: noun (arcade/math)
+      ["numbers","patterns","equations","functions","logic","puzzles","solutions","formulas","sequences","graphs"],
+      ["powerful","exciting","unbeatable","awesome","infinite","legendary","amazing","unstoppable","fun","supreme"],
+      ["playing","solving","climbing","pressing start","leveling up","thinking","continuing","trying","calculating","exploring"],
+      ["conquer","unlock","master","win","dominate","reach","clear","power up","achieve","complete"],
+      ["challenge","game","function","quest","equation","puzzle","stage","level","problem","maze"]
     ];
 
-    // Render input boxes (build once instead of += each loop)
-    const blanksDiv = document.getElementById("blanks");
-    let blanksHTML = "";
-    for (let i = 0; i < answers.length; i++) {
-      blanksHTML += `
-        <div class="blank">
-          ${i + 1}. <input type="text" id="blank${i}" /> 
-          <span class="result" id="result${i}"></span>
-        </div>
-      `;
-    }
-    blanksDiv.innerHTML = blanksHTML;
-
-    // Check answers function
+    // Check answers
     function checkAnswers() {
       let score = 0;
+
       for (let i = 0; i < answers.length; i++) {
-        const input = document.getElementById("blank" + i).value.trim().toLowerCase();
+        let input = document.getElementById("blank" + i).value.trim().toLowerCase();
         const resultSpan = document.getElementById("result" + i);
+
+        // Normalize multiple spaces in case of phrases
+        input = input.replace(/\s+/g, " ");
 
         if (answers[i].includes(input)) {
           resultSpan.textContent = "✅";
@@ -103,7 +100,8 @@
           resultSpan.style.color = "red";
         }
       }
-      document.getElementById("score").textContent = `You got ${score}/10 correct.`;
+
+      document.getElementById("score").textContent = `You got ${score}/5 correct.`;
     }
   </script>
 </body>
