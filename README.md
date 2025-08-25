@@ -3,57 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Word Check Activity</title>
+  <title>The Mathrix: a Staircase-Themed Puzzle for Learning Rational Equations, Functions and One-to-One Functions</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #0d0d0d;
-      color: #f0f0f0;
+      font-family: "Press Start 2P", monospace, Arial, sans-serif;
+      background: linear-gradient(180deg, #0d0d0d, #1a1a1a);
+      color: #00ffcc;
       text-align: center;
       padding: 20px;
     }
     h1 {
-      color: #00ffcc;
+      color: #ffcc00;
+      font-size: 22px;
+      text-shadow: 2px 2px #000;
+      margin-bottom: 10px;
     }
     .sentence {
-      margin: 20px 0;
-      font-size: 20px;
+      margin: 20px auto;
+      font-size: 16px;
+      background: #111;
+      padding: 15px;
+      border: 3px solid #00ffcc;
+      border-radius: 10px;
+      display: inline-block;
+      box-shadow: 0 0 10px #00ffcc;
     }
     input {
-      padding: 6px;
-      font-size: 16px;
+      padding: 8px;
+      font-size: 14px;
       border-radius: 6px;
-      border: none;
+      border: 2px solid #ffcc00;
       outline: none;
       margin: 0 5px;
+      background: #000;
+      color: #fff;
     }
     .result {
       margin-left: 8px;
       font-weight: bold;
     }
     button {
-      background: #00ffcc;
-      color: #000;
-      font-size: 16px;
-      padding: 10px 20px;
+      background: #ff0066;
+      color: #fff;
+      font-size: 14px;
+      padding: 12px 25px;
       border: none;
       border-radius: 8px;
       cursor: pointer;
       margin-top: 20px;
+      text-transform: uppercase;
+      font-weight: bold;
+      box-shadow: 0 0 12px #ff0066;
     }
     button:hover {
-      background: #00cc99;
+      background: #ff3399;
+      box-shadow: 0 0 16px #ff3399;
     }
     #score {
       margin-top: 20px;
       font-size: 18px;
-      color: #ffcc00;
+      color: #00ffcc;
+      text-shadow: 1px 1px #000;
     }
   </style>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Word Type Checker</h1>
-  <p>Fill in the blanks with the correct type of word.</p>
+  <h1>The Mathrix: a Staircase-Themed Puzzle for Learning Rational Equations, Functions and One-to-One Functions</h1>
+  <p>Fill in the blanks with the correct type of word to climb the staircase!</p>
 
   <div class="sentence">
     Math makes 
