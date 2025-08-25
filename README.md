@@ -85,7 +85,6 @@
     color: #80ffff;
     text-shadow: 0 0 6px #00ffff;
   }
-
   /* --- Terminal Section --- */
   .terminal-container {
     margin-top: 20px;
@@ -170,6 +169,7 @@ function normalize(s) {
           .replace(/[()]/g,'')
           .replace(/±/g,'');
 }
+
 const correctAnswers = {
   1:{question:"x/5 = 25",answers:["125"]},
   2:{question:"x/4 = 30",answers:["120"]},
@@ -226,14 +226,91 @@ const correctAnswers = {
   49:{question:"f(x) = (x + 7)/(x^2 - 49)\nVertical asymptote (not hole)?",answers:["7","x=7"]},
   50:{question:"f(x) = (x^2)/(x^2 + 4)\nRange?",answers:["[0,1)","0<=y<1","0≤y<1"]}
 };
-let currentCard=null,waitingForAnswer=false,terminal,termInput,okBtn;
-function appendLine(text){const div=document.createElement("div");div.textContent=text;terminal.appendChild(div);terminal.scrollTop=terminal.scrollHeight;}
-function printWelcome(){appendLine("Welcome to The Mathrix ");appendLine("Step 1: Type a card number (1–50).");appendLine("Step 2: Type your answer.");}
-function handleCardNumber(input){const num=parseInt(input,10);if(!correctAnswers[num]){appendLine(`❌ Card ${input} not found.`);resetState();return;}currentCard=num;waitingForAnswer=true;appendLine(`📜 Card ${num}: ${correctAnswers[num].question}`);appendLine("Now type your answer (or another card number):");termInput.placeholder="Type your answer or another card";}
-function handleAnswer(input){if(/^\d+$/.test(input)&&correctAnswers[parseInt(input,10)]){handleCardNumber(input);return;}if(currentCard===null){appendLine("❌ Please select a card first.");resetState();return;}const ans=normalize(input);const valid=correctAnswers[currentCard].answers.map(a=>normalize(a));if(valid.includes(ans)){appendLine("✅ Correct!");resetState();appendLine("Type another card number to continue.");}else{appendLine("❌ Wrong. Try again, or type a different card number.");termInput.placeholder="Retry or new card";}}
-function sendCommand(){const val=termInput.value.trim();if(!val)return;appendLine("> "+val);if(!waitingForAnswer)handleCardNumber(val);else handleAnswer(val);termInput.value="";termInput.focus();}
-function resetState(){currentCard=null;waitingForAnswer=false;termInput.placeholder="Type card number first";}
-window.onload=function(){terminal=document.getElementById("terminal");termInput=document.getElementById("termInput");okBtn=document.getElementById("okBtn");printWelcome();okBtn.addEventListener("click",sendCommand);termInput.addEventListener("keydown",e=>{if(e.key==="Enter")sendCommand();});termInput.focus();};
+
+let currentCard = null;
+let waitingForAnswer = false;
+let terminal, termInput, okBtn;
+
+function appendLine(text) {
+  const div = document.createElement("div");
+  div.textContent = text;
+  terminal.appendChild(div);
+  terminal.scrollTop = terminal.scrollHeight;
+}
+
+function printWelcome() {
+  appendLine("Welcome to The Mathrix");
+  appendLine("Step 1: Type a card number (1–50).");
+  appendLine("Step 2: Type your answer.");
+}
+
+function handleCardNumber(input) {
+  const num = parseInt(input, 10);
+  if (!correctAnswers[num]) {
+    appendLine(`❌ Card ${input} not found.`);
+    resetState();
+    return;
+  }
+  currentCard = num;
+  waitingForAnswer = true;
+  appendLine(`📜 Card ${num}: ${correctAnswers[num].question}`);
+  appendLine("Now type your answer (or another card number):");
+  termInput.placeholder = "Type your answer or another card";
+}
+
+function handleAnswer(input) {
+  // If input is a number and valid card, treat as new card number
+  if (/^\d+$/.test(input) && correctAnswers[parseInt(input, 10)]) {
+    handleCardNumber(input);
+    return;
+  }
+  if (currentCard === null) {
+    appendLine("❌ Please select a card first.");
+    resetState();
+    return;
+  }
+  
+  const ans = normalize(input);
+  const valid = correctAnswers[currentCard].answers.map(a => normalize(a));
+  if (valid.includes(ans)) {
+    appendLine("✅ Correct!");
+    resetState();
+    appendLine("Type another card number to continue.");
+  } else {
+    appendLine("❌ Wrong. Try again, or type a different card number.");
+    termInput.placeholder = "Retry or new card";
+  }
+}
+
+function sendCommand() {
+  const val = termInput.value.trim();
+  if (!val) return;
+  appendLine("> " + val);
+  if (!waitingForAnswer)
+    handleCardNumber(val);
+  else
+    handleAnswer(val);
+  termInput.value = "";
+  termInput.focus();
+}
+
+function resetState() {
+  currentCard = null;
+  waitingForAnswer = false;
+  termInput.placeholder = "Type card number first";
+}
+
+window.onload = function() {
+  terminal = document.getElementById("terminal");
+  termInput = document.getElementById("termInput");
+  okBtn = document.getElementById("okBtn");
+  printWelcome();
+  okBtn.addEventListener("click", sendCommand);
+  termInput.addEventListener("keydown", e => {
+    if (e.key === "Enter") sendCommand();
+  });
+  termInput.focus();
+};
 
 /* --- Sentence Game --- */
 const answers = [
@@ -243,6 +320,7 @@ const answers = [
   ["conquer","unlock","master","win","dominate","reach","clear","achieve","complete","overcome"],
   ["challenge","game","function","quest","equation","puzzle","stage","level","problem","maze"]
 ];
+
 function checkAnswers() {
   let score = 0;
   for (let i = 0; i < answers.length; i++) {
