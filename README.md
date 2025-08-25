@@ -10,48 +10,48 @@
       background: radial-gradient(circle at top, #2a003f, #0d001a);
       color: #e0b3ff;
       text-align: center;
-      padding: 12px;
-      max-width: 480px; /* lock into portrait */
+      padding: 8px;
+      max-width: 480px; /* lock into portrait size */
       margin: auto;
     }
     h1 {
       color: #ff66ff;
-      font-size: 5vw;
-      text-shadow: 0 0 6px #ff00ff, 0 0 12px #cc00cc;
-      margin-bottom: 12px;
-      line-height: 1.4;
+      font-size: 4vw; /* smaller */
+      text-shadow: 0 0 5px #ff00ff, 0 0 10px #cc00cc;
+      margin-bottom: 10px;
+      line-height: 1.3;
     }
     p {
-      font-size: 3.8vw;
-      margin-bottom: 15px;
+      font-size: 3.2vw;
+      margin-bottom: 12px;
       color: #80ffff;
-      text-shadow: 0 0 6px #00ffff;
+      text-shadow: 0 0 5px #00ffff;
     }
     .sentence {
-      margin: 12px auto;
-      font-size: 3.5vw;
+      margin: 10px auto;
+      font-size: 3vw;
       background: rgba(20, 0, 40, 0.9);
-      padding: 12px;
-      border: 3px solid #ff00cc;
-      border-radius: 14px;
+      padding: 10px;
+      border: 2px solid #ff00cc;
+      border-radius: 12px;
       display: block;
       max-width: 95%;
-      box-shadow: 0 0 16px #ff00cc, 0 0 24px #800080;
+      box-shadow: 0 0 12px #ff00cc, 0 0 18px #800080;
       word-wrap: break-word;
       color: #ffffff;
     }
     input {
-      padding: 8px;
-      font-size: 3.5vw;
-      border-radius: 8px;
+      padding: 6px;
+      font-size: 3vw;
+      border-radius: 6px;
       border: 2px solid #00ffff;
       outline: none;
-      margin: 6px auto;
+      margin: 5px auto;
       background: #1a0033;
       color: #fff;
-      width: 90%;
+      width: 85%;
       display: block;
-      box-shadow: 0 0 10px #00ffff, 0 0 14px #0088ff inset;
+      box-shadow: 0 0 8px #00ffff, 0 0 12px #0088ff inset;
       text-align: center;
     }
     input::placeholder {
@@ -60,31 +60,31 @@
     .result {
       display: block;
       font-weight: bold;
-      font-size: 4vw;
-      margin-top: 4px;
+      font-size: 3vw;
+      margin-top: 3px;
     }
     button {
       background: linear-gradient(135deg, #ff00cc, #6600ff);
       color: #fff;
-      font-size: 4vw;
-      padding: 12px 22px;
+      font-size: 3.5vw;
+      padding: 10px 18px;
       border: none;
-      border-radius: 10px;
+      border-radius: 8px;
       cursor: pointer;
-      margin-top: 18px;
+      margin-top: 14px;
       text-transform: uppercase;
       font-weight: bold;
-      box-shadow: 0 0 14px #ff00ff, 0 0 18px #6600ff;
+      box-shadow: 0 0 12px #ff00ff, 0 0 16px #6600ff;
     }
     button:hover {
       background: linear-gradient(135deg, #ff33ff, #8000ff);
-      box-shadow: 0 0 20px #ff33ff, 0 0 24px #8000ff;
+      box-shadow: 0 0 16px #ff33ff, 0 0 20px #8000ff;
     }
     #score {
-      margin-top: 18px;
-      font-size: 4.2vw;
+      margin-top: 14px;
+      font-size: 3.5vw;
       color: #80ffff;
-      text-shadow: 0 0 8px #00ffff;
+      text-shadow: 0 0 6px #00ffff;
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -120,7 +120,6 @@
 
     function checkAnswers() {
       let score = 0;
-
       for (let i = 0; i < answers.length; i++) {
         let input = document.getElementById("blank" + i).value.trim().toLowerCase();
         const resultSpan = document.getElementById("result" + i);
@@ -136,9 +135,7 @@
           resultSpan.style.color = "#ff3366";
         }
       }
-
-      document.getElementById("score").textContent = 
-        `You got ${score}/5 correct.`;
+      document.getElementById("score").textContent = `You got ${score}/5 correct.`;
     }
   </script>
 </body>
