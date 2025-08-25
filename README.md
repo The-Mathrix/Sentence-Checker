@@ -2,87 +2,89 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>The Mathrix: a Staircase-Themed Puzzle for Learning Rational Equations, Functions and One-to-One Functions</title>
   <style>
     body {
       font-family: "Press Start 2P", monospace, Arial, sans-serif;
-      background: linear-gradient(180deg, #0d0d0d, #1a1a1a);
-      color: #00ffcc;
+      background: radial-gradient(circle at top, #2a003f, #0d001a);
+      color: #e0b3ff;
       text-align: center;
-      padding: 10px;
+      padding: 12px;
+      max-width: 480px; /* lock into portrait */
+      margin: auto;
     }
     h1 {
-      color: #ffcc00;
-      font-size: 4vw; /* responsive heading */
-      text-shadow: 2px 2px #000;
-      margin-bottom: 10px;
+      color: #ff66ff;
+      font-size: 5vw;
+      text-shadow: 0 0 6px #ff00ff, 0 0 12px #cc00cc;
+      margin-bottom: 12px;
       line-height: 1.4;
     }
     p {
-      font-size: 3.5vw;
+      font-size: 3.8vw;
       margin-bottom: 15px;
+      color: #80ffff;
+      text-shadow: 0 0 6px #00ffff;
     }
     .sentence {
-      margin: 10px auto;
+      margin: 12px auto;
       font-size: 3.5vw;
-      background: #111;
-      padding: 10px;
-      border: 3px solid #00ffcc;
-      border-radius: 10px;
+      background: rgba(20, 0, 40, 0.9);
+      padding: 12px;
+      border: 3px solid #ff00cc;
+      border-radius: 14px;
       display: block;
       max-width: 95%;
-      box-shadow: 0 0 10px #00ffcc;
+      box-shadow: 0 0 16px #ff00cc, 0 0 24px #800080;
       word-wrap: break-word;
+      color: #ffffff;
     }
     input {
-      padding: 6px;
-      font-size: 3.2vw;
-      border-radius: 6px;
-      border: 2px solid #ffcc00;
+      padding: 8px;
+      font-size: 3.5vw;
+      border-radius: 8px;
+      border: 2px solid #00ffff;
       outline: none;
-      margin: 4px 0;
-      background: #000;
+      margin: 6px auto;
+      background: #1a0033;
       color: #fff;
-      width: 80%; /* inputs fit mobile screen */
+      width: 90%;
       display: block;
-      margin-left: auto;
-      margin-right: auto;
+      box-shadow: 0 0 10px #00ffff, 0 0 14px #0088ff inset;
+      text-align: center;
+    }
+    input::placeholder {
+      color: #ccccff;
     }
     .result {
-      margin-left: 4px;
+      display: block;
       font-weight: bold;
-      font-size: 3.5vw;
+      font-size: 4vw;
+      margin-top: 4px;
     }
     button {
-      background: #ff0066;
+      background: linear-gradient(135deg, #ff00cc, #6600ff);
       color: #fff;
       font-size: 4vw;
-      padding: 10px 20px;
+      padding: 12px 22px;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
-      margin-top: 15px;
+      margin-top: 18px;
       text-transform: uppercase;
       font-weight: bold;
-      box-shadow: 0 0 12px #ff0066;
+      box-shadow: 0 0 14px #ff00ff, 0 0 18px #6600ff;
     }
     button:hover {
-      background: #ff3399;
-      box-shadow: 0 0 16px #ff3399;
+      background: linear-gradient(135deg, #ff33ff, #8000ff);
+      box-shadow: 0 0 20px #ff33ff, 0 0 24px #8000ff;
     }
     #score {
-      margin-top: 15px;
-      font-size: 4vw;
-      color: #00ffcc;
-      text-shadow: 1px 1px #000;
-    }
-
-    /* Mobile optimization */
-    @media (min-width: 600px) {
-      h1 { font-size: 22px; }
-      p, .sentence, input, button, #score { font-size: 16px; }
-      input { width: auto; display: inline-block; }
+      margin-top: 18px;
+      font-size: 4.2vw;
+      color: #80ffff;
+      text-shadow: 0 0 8px #00ffff;
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -116,7 +118,6 @@
       ["challenge","game","function","quest","equation","puzzle","stage","level","problem","maze"]
     ];
 
-    // Check answers
     function checkAnswers() {
       let score = 0;
 
@@ -124,15 +125,15 @@
         let input = document.getElementById("blank" + i).value.trim().toLowerCase();
         const resultSpan = document.getElementById("result" + i);
 
-        input = input.replace(/\s+/g, " "); // normalize spaces
+        input = input.replace(/\s+/g, " "); 
 
         if (answers[i].includes(input)) {
-          resultSpan.textContent = "✅";
-          resultSpan.style.color = "lime";
+          resultSpan.textContent = "✅ Correct!";
+          resultSpan.style.color = "#00ff99";
           score++;
         } else {
-          resultSpan.textContent = "❌";
-          resultSpan.style.color = "red";
+          resultSpan.textContent = "❌ Wrong!";
+          resultSpan.style.color = "#ff3366";
         }
       }
 
