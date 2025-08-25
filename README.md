@@ -228,7 +228,7 @@ const correctAnswers = {
 };
 let currentCard=null,waitingForAnswer=false,terminal,termInput,okBtn;
 function appendLine(text){const div=document.createElement("div");div.textContent=text;terminal.appendChild(div);terminal.scrollTop=terminal.scrollHeight;}
-function printWelcome(){appendLine("Welcome to The Mathrix Terminal!");appendLine("Step 1: Type a card number (1–20).");appendLine("Step 2: Type your answer.");}
+function printWelcome(){appendLine("Welcome to The Mathrix Terminal!");appendLine("Step 1: Type a card number (1–50).");appendLine("Step 2: Type your answer.");}
 function handleCardNumber(input){const num=parseInt(input,10);if(!correctAnswers[num]){appendLine(`❌ Card ${input} not found.`);resetState();return;}currentCard=num;waitingForAnswer=true;appendLine(`📜 Card ${num}: ${correctAnswers[num].question}`);appendLine("Now type your answer (or another card number):");termInput.placeholder="Type your answer or another card";}
 function handleAnswer(input){if(/^\d+$/.test(input)&&correctAnswers[parseInt(input,10)]){handleCardNumber(input);return;}if(currentCard===null){appendLine("❌ Please select a card first.");resetState();return;}const ans=normalize(input);const valid=correctAnswers[currentCard].answers.map(a=>normalize(a));if(valid.includes(ans)){appendLine("✅ Correct!");resetState();appendLine("Type another card number to continue.");}else{appendLine("❌ Wrong. Try again, or type a different card number.");termInput.placeholder="Retry or new card";}}
 function sendCommand(){const val=termInput.value.trim();if(!val)return;appendLine("> "+val);if(!waitingForAnswer)handleCardNumber(val);else handleAnswer(val);termInput.value="";termInput.focus();}
