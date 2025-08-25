@@ -10,47 +10,59 @@
       background: linear-gradient(180deg, #0d0d0d, #1a1a1a);
       color: #00ffcc;
       text-align: center;
-      padding: 20px;
+      padding: 10px;
     }
     h1 {
       color: #ffcc00;
-      font-size: 22px;
+      font-size: 4vw; /* responsive heading */
       text-shadow: 2px 2px #000;
       margin-bottom: 10px;
+      line-height: 1.4;
+    }
+    p {
+      font-size: 3.5vw;
+      margin-bottom: 15px;
     }
     .sentence {
-      margin: 20px auto;
-      font-size: 16px;
+      margin: 10px auto;
+      font-size: 3.5vw;
       background: #111;
-      padding: 15px;
+      padding: 10px;
       border: 3px solid #00ffcc;
       border-radius: 10px;
-      display: inline-block;
+      display: block;
+      max-width: 95%;
       box-shadow: 0 0 10px #00ffcc;
+      word-wrap: break-word;
     }
     input {
-      padding: 8px;
-      font-size: 14px;
+      padding: 6px;
+      font-size: 3.2vw;
       border-radius: 6px;
       border: 2px solid #ffcc00;
       outline: none;
-      margin: 0 5px;
+      margin: 4px 0;
       background: #000;
       color: #fff;
+      width: 80%; /* inputs fit mobile screen */
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
     .result {
-      margin-left: 8px;
+      margin-left: 4px;
       font-weight: bold;
+      font-size: 3.5vw;
     }
     button {
       background: #ff0066;
       color: #fff;
-      font-size: 14px;
-      padding: 12px 25px;
+      font-size: 4vw;
+      padding: 10px 20px;
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      margin-top: 20px;
+      margin-top: 15px;
       text-transform: uppercase;
       font-weight: bold;
       box-shadow: 0 0 12px #ff0066;
@@ -60,10 +72,17 @@
       box-shadow: 0 0 16px #ff3399;
     }
     #score {
-      margin-top: 20px;
-      font-size: 18px;
+      margin-top: 15px;
+      font-size: 4vw;
       color: #00ffcc;
       text-shadow: 1px 1px #000;
+    }
+
+    /* Mobile optimization */
+    @media (min-width: 600px) {
+      h1 { font-size: 22px; }
+      p, .sentence, input, button, #score { font-size: 16px; }
+      input { width: auto; display: inline-block; }
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -105,8 +124,7 @@
         let input = document.getElementById("blank" + i).value.trim().toLowerCase();
         const resultSpan = document.getElementById("result" + i);
 
-        // Normalize multiple spaces in case of phrases
-        input = input.replace(/\s+/g, " ");
+        input = input.replace(/\s+/g, " "); // normalize spaces
 
         if (answers[i].includes(input)) {
           resultSpan.textContent = "✅";
