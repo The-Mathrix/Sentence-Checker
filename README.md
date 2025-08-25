@@ -262,4 +262,4 @@ function checkAnswers() {
 }
 </script>
 </body>
-</html> fix all the errors
+</html>
