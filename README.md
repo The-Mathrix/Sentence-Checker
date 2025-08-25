@@ -74,16 +74,18 @@
       ["puzzle", "staircase"]                    // 10: noun (arcade/math)
     ];
 
-    // Render input boxes
+    // Render input boxes (build once instead of += each loop)
     const blanksDiv = document.getElementById("blanks");
+    let blanksHTML = "";
     for (let i = 0; i < answers.length; i++) {
-      blanksDiv.innerHTML += `
+      blanksHTML += `
         <div class="blank">
           ${i + 1}. <input type="text" id="blank${i}" /> 
           <span class="result" id="result${i}"></span>
         </div>
       `;
     }
+    blanksDiv.innerHTML = blanksHTML;
 
     // Check answers function
     function checkAnswers() {
