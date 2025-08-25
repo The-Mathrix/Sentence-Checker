@@ -60,7 +60,7 @@
     <input type="text" id="blank0" placeholder="Noun (math)"> <span id="result0" class="result"></span> 
     <input type="text" id="blank1" placeholder="Adjective"> <span id="result1" class="result"></span>, 
     so keep 
-    <input type="text" id="blank2" placeholder="Action"> <span id="result2" class="result"></span> 
+    <input type="text" id="blank2" placeholder="Verb-ing action"> <span id="result2" class="result"></span> 
     and you will 
     <input type="text" id="blank3" placeholder="Verb"> <span id="result3" class="result"></span> 
     the 
@@ -101,7 +101,8 @@
         }
       }
 
-      document.getElementById("score").textContent = `You got ${score}/5 correct.`;
+      document.getElementById("score").textContent = 
+        `You got ${score}/5 correct.`;
     }
   </script>
 </body>
