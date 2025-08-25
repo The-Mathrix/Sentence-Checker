@@ -11,12 +11,12 @@
       color: #e0b3ff;
       text-align: center;
       padding: 8px;
-      max-width: 480px; /* lock into portrait size */
+      max-width: 480px;
       margin: auto;
     }
     h1 {
       color: #ff66ff;
-      font-size: 4vw; /* smaller */
+      font-size: 4vw;
       text-shadow: 0 0 5px #ff00ff, 0 0 10px #cc00cc;
       margin-bottom: 10px;
       line-height: 1.3;
@@ -95,7 +95,7 @@
 
   <div class="sentence">
     Math makes 
-    <input type="text" id="blank0" placeholder="Noun (math)"> <span id="result0" class="result"></span> 
+    <input type="text" id="blank0" placeholder="Noun (math)"> <span id="result0" class="result"></span>
     <input type="text" id="blank1" placeholder="Adjective"> <span id="result1" class="result"></span>, 
     so keep 
     <input type="text" id="blank2" placeholder="Verb-ing (action)"> <span id="result2" class="result"></span> 
@@ -109,7 +109,6 @@
   <div id="score"></div>
 
   <script>
-    // Word banks for each blank
     const answers = [
       ["numbers","patterns","equations","functions","logic","puzzles","solutions","formulas","sequences","graphs"],
       ["powerful","exciting","unbeatable","awesome","infinite","legendary","amazing","unstoppable","fun","supreme"],
@@ -124,7 +123,7 @@
         let input = document.getElementById("blank" + i).value.trim().toLowerCase();
         const resultSpan = document.getElementById("result" + i);
 
-        input = input.replace(/\s+/g, " "); // normalize spaces
+        input = input.replace(/\s+/g, " ");
 
         if (answers[i].includes(input)) {
           resultSpan.textContent = "✅ Correct!";
